@@ -9,11 +9,11 @@ export class Read extends React.Component {
         movies: []
     };
     //componentDidMount executes after the first render on the client side
-    //axios retrives movie information from JSON file in the link
+    //axios retrives movie information from the link
     componentDidMount() {
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+        axios.get('http://localhost:4000/api/movies')
             .then((response) => {
-                    this.setState({ movies: response.data.Search })
+                    this.setState({ movies: response.data.movies })
                 }
             )
     //if there is an error an error message will be returned
