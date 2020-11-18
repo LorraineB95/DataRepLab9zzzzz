@@ -16,39 +16,44 @@ export class Create extends React.Component {
 
         //State stores data relevant to the component
         this.state = {
-            Title: '',
-            Year: '',
-            Poster: '',
+            title: '',
+            year: '',
+            poster: '',
         }
     }
     //e.target.value is the value property of the DOM element, ie the info submitted in the form
     //This is when the functions are called
     onChangeTitle(e) {
         this.setState({
-            Title: e.target.value
+            title: e.target.value
         })
     }
     onChangePoster(e) {
         this.setState({
-            Poster: e.target.value
+            poster: e.target.value
         })
     }
 
     onChangeYear(e) {
         this.setState({
-            Year: e.target.value
+            year: e.target.value
         })
     }
     onSubmit(e) {
         e.preventDefault();
 
         //alert returns a pop up so we know the data has been entered
-        alert("Movie:" + this.state.Title + " " + this.state.Year
-            + " " + this.state.Poster);
+
+    console.log(this.state.title);
+    console.log(this.state.year);
+    console.log(this.state.poster);
+
+        alert("Movie:" + this.state.title + " " + this.state.year
+            + " " + this.state.poster);
             const newMovie = {
-                title: this.state.Title,
-                year: this.state.Year,
-                poster: this.state.Poster
+                title: this.state.title,
+                year: this.state.year,
+                poster: this.state.poster
             }
             axios.post('http://localhost:4000/api/movies', newMovie)
             .then((res)=>{
@@ -57,6 +62,7 @@ export class Create extends React.Component {
             .catch((err)=>{
                 console.log(err);
             });
+            
     }
 
     //<form> creates a form for the user to interact with and add movie information
@@ -68,14 +74,14 @@ export class Create extends React.Component {
                         <label>Add Movie Title</label>
                         <input type='text'
                             className='form-control'
-                            value={this.state.Title}
+                            value={this.state.title}
                             onChange={this.onChangeTitle}></input>
                     </div>
                     <div className="form-group">
                         <label>Add Movie Year:</label>
                         <input type='text'
                             className='form-control'
-                            value={this.state.Year}
+                            value={this.state.year}
                             onChange={this.onChangeYear}>
                         </input>
                     </div>
@@ -83,7 +89,7 @@ export class Create extends React.Component {
                         <label>Movie Poster:</label>
                         <textarea type='text'
                             className='form-control'
-                            value={this.state.Poster}
+                            value={this.state.poster}
                             onChange={this.onChangePoster}>
                         </textarea>
                     </div>
