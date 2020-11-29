@@ -8,8 +8,23 @@ export class Read extends React.Component {
 
         movies: []
     };
+    constructor(){
+        super();
+        this.ReloadDataMethod = this.ReloadDataMethod.bind(this);
+        }
+        
     //componentDidMount executes after the first render on the client side
     //axios retrives movie information from the link
+    ReloadDataMethod(){
+        axios.get('http://localhost:4000/api/movies')
+        .then((response)=>{
+        this.setState({movies: response.data.movies})
+        })
+        .catch((error)=>{
+        console.log(error);
+        });
+        }
+        
     componentDidMount() {
         axios.get('http://localhost:4000/api/movies')
             .then((response) => {

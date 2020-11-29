@@ -77,6 +77,19 @@ app.post('/api/movies', (req, res)=>{
         poster:req.body.poster
     })
 })
+
+//Deletes movie by id
+app.delete('/api/movies/:id', function (req, res) {
+    console.log(req.params.id);
+    //Asynchronous call to the database
+    movieModel.deleteOne({ _id: req.params.id },
+    function (err, data) {
+    if (err)
+    res.send(err);
+    res.send(data);
+    })
+    })
+    
 //gets the movie by id
 app.get('/api/movies/:id', (req, res)=>{
 

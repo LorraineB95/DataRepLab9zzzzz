@@ -6,12 +6,11 @@ export class Movies extends React.Component{
     //Map is used to render the list of data from state
     //Props passes the movie data between parent and child component
     render(){
-
-        return this.props.myMovies.map(
-            (movie)=>{
-               return <MovieItem myMovies={movie}></MovieItem>
-            }
-        );
+        return this.props.myMovies.map((myMovies)=>{
+        //console.log({movie});
+        return <MovieItem key={myMovies._id} myMovies={myMovies}
+        ReloadDataMethod={this.props.ReloadDataMethod}></MovieItem>
+});
 
         /*return(
             <div>
